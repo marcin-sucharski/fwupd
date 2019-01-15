@@ -1,0 +1,11 @@
+########################################################################
+# Copyright (C) 2019 Mario Limonciello <mario.limonciello@dell.com>
+#
+# SPDX-License-Identifier: LGPL-2.1+
+#
+
+# Dell docking
+SUBSYSTEM=="usb", ENV{ID_VENDOR_ID}=="413c", ENV{ID_MODEL_ID}=="b06e", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="fwupdtool.service"
+
+# NVMe disks
+SUBSYSTEM=="nvme", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="fwupdtool.service"

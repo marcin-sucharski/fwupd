@@ -167,6 +167,8 @@ if get_option('daemon')
   if polkit.version().version_compare('>= 0.114')
     conf.set('HAVE_POLKIT_0_114', '1')
   endif
+endif
+if get_option('daemon') or get_option('fwupdtool_udev')
   udevdir = get_option('udevdir')
   if udevdir == ''
     udev = dependency('udev')

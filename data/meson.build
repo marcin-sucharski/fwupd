@@ -30,6 +30,13 @@ if get_option('daemon')
   )
 endif
 
+if get_option('fwupdtool_udev')
+  if not get_option('systemd')
+    error('fwupdtool_udev also needs systemd to work')
+  endif
+  subdir('fwupdtool-udev')
+endif
+
 if get_option('systemd')
   con2 = configuration_data()
   con2.set('libexecdir', libexecdir)
