@@ -8,6 +8,6 @@ eval "$(dpkg-buildflags --export=sh)"
 rm -rf build
 meson build --werror
 #build with clang and -Werror
-ninja -C build -v
+ninja -C build test -v
 #run static analysis (these mostly won't be critical)
 ninja -C build scan-build -v
