@@ -2,6 +2,9 @@
 set -e
 set -x
 
+#evaluate using Ubuntu's buildflags
+eval "$(dpkg-buildflags --export=sh)"
+
 rm -rf build
 meson build --werror
 #build with clang and -Werror
