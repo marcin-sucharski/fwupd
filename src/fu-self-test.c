@@ -607,12 +607,6 @@ fu_engine_require_hwid_func (void)
 	g_autoptr(XbSilo) silo_empty = xb_silo_new ();
 	g_autoptr(XbSilo) silo = NULL;
 
-#if !defined(HAVE_GCAB_0_8) && defined(__s390x__)
-	/* See https://github.com/hughsie/fwupd/issues/318 for more information */
-	g_test_skip ("Skipping HWID test on s390x due to known problem with gcab");
-	return;
-#endif
-
 	/* no metadata in daemon */
 	fu_engine_set_silo (engine, silo_empty);
 
@@ -2531,7 +2525,6 @@ fu_common_endian_func (void)
 static GBytes *
 _build_cab (GCabCompression compression, ...)
 {
-#ifdef HAVE_GCAB_1_0
 	gboolean ret;
 	va_list args;
 	g_autoptr(GCabCabinet) cabinet = NULL;
@@ -2583,9 +2576,6 @@ _build_cab (GCabCompression compression, ...)
 	g_assert_no_error (error);
 	g_assert (ret);
 	return g_memory_output_stream_steal_as_bytes (G_MEMORY_OUTPUT_STREAM (op));
-#else
-	return NULL;
-#endif
 }
 
 static void
