@@ -208,6 +208,7 @@ parts:
                        -Dgtkdoc=false,
                        -Dintrospection=false,
                        -Dman=false,
+                       -Dplugin_modem_manager=true,
                        -Dudevdir=$SNAPCRAFT_STAGE/lib/udev,
                        "-Dlibxmlb:gtkdoc=false",
                        "-Dlibxmlb:introspection=false",
